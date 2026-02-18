@@ -7,6 +7,8 @@ def handler(event, context):
 
     session = event.get("request", {}).get("session") or []
 
+    event.setdefault("response", {})
+
     # First request: ask for a custom challenge.
     if len(session) == 0:
         event["response"]["issueTokens"] = False

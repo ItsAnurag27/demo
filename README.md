@@ -51,6 +51,22 @@ Attach these triggers:
 - **Create auth challenge** → use `cognito-lambdas/create-auth-challenge.py`
 - **Verify auth challenge response** → use `cognito-lambdas/verify-auth-challenge-response.py`
 
+### Option: use ONE Lambda instead of three
+
+Cognito requires the **three trigger slots**, but they can all point to the **same Lambda function**.
+
+If you want to deploy only one Lambda, use:
+
+- `cognito-lambdas/custom-auth-combined.py`
+
+Then attach that same Lambda ARN to:
+
+- Define auth challenge
+- Create auth challenge
+- Verify auth challenge response
+
+Note: if you use the combined Lambda, it must have the union of permissions/env vars (SES send + `FROM_EMAIL`, etc.).
+
 ### CreateAuthChallenge Lambda environment
 
 Set environment variables on the **CreateAuthChallenge** Lambda:
