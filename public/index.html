@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cognito Email OTP Login</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Email OTP Login</h1>
+
+      <section id="step-email">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="name@example.com" autocomplete="email" />
+        <button id="btn-send">Send OTP</button>
+      </section>
+
+      <section id="step-otp" class="hidden">
+        <label for="otp">OTP</label>
+        <input id="otp" type="text" inputmode="numeric" placeholder="Enter OTP" autocomplete="one-time-code" />
+        <div class="row">
+          <button id="btn-verify">Verify OTP</button>
+          <button id="btn-back" class="secondary">Back</button>
+        </div>
+      </section>
+
+      <section id="step-success" class="hidden">
+        <h2>Login success</h2>
+        <pre id="user"></pre>
+        <button id="btn-logout" class="secondary">Logout</button>
+      </section>
+
+      <p id="status" class="status"></p>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

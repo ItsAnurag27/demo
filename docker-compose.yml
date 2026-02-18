@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+
+    # Optional (corporate proxy / TLS inspection):
+    # environment:
+    #   - HTTP_PROXY=http://<proxy-host>:<proxy-port>
+    #   - HTTPS_PROXY=http://<proxy-host>:<proxy-port>
+    #   - NO_PROXY=localhost,127.0.0.1
+    #   - http_proxy=http://<proxy-host>:<proxy-port>
+    #   - https_proxy=http://<proxy-host>:<proxy-port>
+    #   - no_proxy=localhost,127.0.0.1
+    #
+    # If HTTPS fails with UNABLE_TO_GET_ISSUER_CERT_LOCALLY due to TLS inspection,
+    # export your corporate root CA to ./certs/corp-root-ca.pem and uncomment:
+    # volumes:
+    #   - ./certs/corp-root-ca.pem:/certs/corp-root-ca.pem:ro
+    # environment:
+    #   - NODE_EXTRA_CA_CERTS=/certs/corp-root-ca.pem
