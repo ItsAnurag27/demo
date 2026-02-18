@@ -47,9 +47,9 @@ User pool → **User pool properties** → **Lambda triggers**:
 
 Attach these triggers:
 
-- **Define auth challenge** → use `cognito-lambdas/define-auth-challenge.js`
-- **Create auth challenge** → use `cognito-lambdas/create-auth-challenge.js`
-- **Verify auth challenge response** → use `cognito-lambdas/verify-auth-challenge-response.js`
+- **Define auth challenge** → use `cognito-lambdas/define-auth-challenge.py`
+- **Create auth challenge** → use `cognito-lambdas/create-auth-challenge.py`
+- **Verify auth challenge response** → use `cognito-lambdas/verify-auth-challenge-response.py`
 
 ### CreateAuthChallenge Lambda environment
 
