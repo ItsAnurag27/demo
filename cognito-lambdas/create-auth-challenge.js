@@ -2,6 +2,8 @@ const AWS = require("aws-sdk");
 
 const ses = new AWS.SES({ region: process.env.AWS_REGION });
 
+const OTP_TTL_MS = 15 * 60 * 1000; // 15 minutes
+
 function generateOtp() {
   return String(Math.floor(100000 + Math.random() * 900000));
 }
@@ -13,6 +15,7 @@ exports.handler = async (event) => {
 
   const email = event.userName; // we use email as username
   const otp = generateOtp();
+  const issuedAt = Date.now();
 
   // Send the OTP via SES.
   // You must verify FROM_EMAIL in SES and (if in sandbox) also verify the recipient.
@@ -36,8 +39,12 @@ exports.handler = async (event) => {
 
   // Cognito will store this and later pass it to VerifyAuthChallengeResponse.
   event.response.publicChallengeParameters = { email };
-  event.response.privateChallengeParameters = { answer: otp };
-  event.response.challengeMetadata = "EMAIL_OTP";
+  event.response.privateChallengeParameters = {
+    answer: otp,
+    issuedAt: String(issuedAt),
+    ttlMs: String(OTP_TTL_MS)
+  };
+  event.response.challengeMetadata = `EMAIL_OTP_${issuedAt}`;
 
   return event;
 };

@@ -127,6 +127,7 @@ Open:
 - If OTP emails don’t arrive, check:
   - SES sender verification and SES sandbox restrictions
   - CloudWatch logs for the CreateAuthChallenge Lambda
+- OTP expiry: the sample lambdas enforce a 15-minute expiration window.
 - If Cognito errors on `/api/auth/start`, verify:
   - App client has Custom Auth enabled
   - The 3 Lambda triggers are attached to the user pool
